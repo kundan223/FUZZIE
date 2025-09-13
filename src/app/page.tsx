@@ -5,6 +5,9 @@ import { clients, products } from "@/lib/constant";
 import { HeroParallax } from "@/components/global/connect-parallax";
 import { ContainerScroll } from "@/components/global/container-scroll-animation";
 import { LampComponent } from "@/components/global/lamp";
+import { CardBody, CardContainer, CardItem } from '@/components/global/3d-card'
+import { CheckIcon } from 'lucide-react'
+
 
 export default function Home() {
   return (
