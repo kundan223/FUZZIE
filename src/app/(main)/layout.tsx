@@ -1,6 +1,6 @@
 import { Sidebar } from 'lucide-react'
 import React from 'react'
-iporty sidebar from '@/components/sidebar'
+import sidebar from '@/components/sidebar'
 
 type Props = { children: React.ReactNode }
 
