@@ -1,16 +1,13 @@
-// app/(main)/(pages)/settings/page.tsx
 import React from 'react'
-import { currentUser } from '@clerk/nextjs'
 
 type Props = {}
 
-const Settings = async (props: Props) => {
-  const authUser = await currentUser()
-  if (!authUser) return null
-
+const Settings = (props: Props) => {
   return (
-    <div className="p-6">
-      <h1 className="text-4xl font-bold">Settings</h1>
+    <div className="flex flex-col gap-4">
+      <h1 className="sticky top-0 z-[10] flex items-center justify-between border-b bg-background/50 p-6 text-4xl backdrop-blur-lg">
+        <span>Settings</span>
+      </h1>
     </div>
   )
 }
