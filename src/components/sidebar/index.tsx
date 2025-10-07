@@ -46,8 +46,10 @@ const MenuOptions = (props: Props) => {
                       </Link>
                     </li>
                   </TooltipTrigger>
-                  <TooltipContent>
-                    {menuItem.name}
+                  <TooltipContent
+                  side= 'right'
+                  className='bg-black/10 backdrop-blur-xl text-zinc-50 '>
+                    <p>{menuItem.name}</p>
                   </TooltipContent>
                 </Tooltip>
               </ul>
