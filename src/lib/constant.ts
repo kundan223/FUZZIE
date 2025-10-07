@@ -83,3 +83,16 @@ export const products = [
     thumbnail: '/p3.png',
   },
 ]
+
+
+
+export const menuOptions = [
+  { name: 'Dashboard', href: '/dashboard' },
+  { name: 'Workflows', href: '/workflows' },
+  { name: 'Settings', href: '/settings' },
+  { name: 'Connections', href: '/connections' },
+  { name: 'Billing', href: '/billing' },
+  { name: 'Templates', href: '/templates' },
+  { name: 'Logs', href: '/logs' },
+]
+
