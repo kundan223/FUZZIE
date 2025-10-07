@@ -1,8 +1,11 @@
 import React from 'react'
+import ProfileForm from '@/components/forms/profile-form'
 
 type Props = {}
 
 const Settings = (props: Props) => {
+
+    // WIP : WIRE UP PROFILE PICTURE 
   return (
     <div className="flex flex-col gap-4">
       <h1 className="sticky top-0 z-[10] flex items-center justify-between border-b bg-background/50 p-6 text-4xl backdrop-blur-lg">
@@ -15,6 +18,8 @@ const Settings = (props: Props) => {
                 Add or upodate your information 
             </p>
         </div>
+
+        <ProfileForm/>
 
       </div>
     </div>
