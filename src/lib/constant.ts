@@ -1,3 +1,13 @@
+import Category from '@/components/icons/category'
+import Logs from '@/components/icons/clipboard'
+import Templates from '@/components/icons/cloud_download'
+import Home from '@/components/icons/home'
+import Payment from '@/components/icons/payment'
+import Settings from '@/components/icons/settings'
+import Workflows from '@/components/icons/workflows'
+import { Connection } from './types'
+
+
 export const clients = [...new Array(10)].map((client, index) => ({
   href: `/${index + 1}.png`,
 }))
@@ -87,12 +97,11 @@ export const products = [
 
 
 export const menuOptions = [
-  { name: 'Dashboard', href: '/dashboard' },
-  { name: 'Workflows', href: '/workflows' },
-  { name: 'Settings', href: '/settings' },
-  { name: 'Connections', href: '/connections' },
-  { name: 'Billing', href: '/billing' },
-  { name: 'Templates', href: '/templates' },
-  { name: 'Logs', href: '/logs' },
-]
-
+  { name: 'Dashboard', href: '/dashboard', Component: Home },
+  { name: 'Workflows', href: '/workflows', Component: Workflows},
+  { name: 'Settings', href: '/settings', Component: Settings},
+  { name: 'Connections', href: '/connections', Component: Category },
+  { name: 'Billing', href: '/billing', Component: Payment  },
+  { name: 'Templates', href: '/templates', Component: Templates },
+  { name: 'Logs', href: '/logs', Component: Logs },
+];

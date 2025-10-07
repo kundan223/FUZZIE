@@ -1,70 +1,58 @@
 'use client'
-import { usePathname } from 'next/navigation'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React from 'react'
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
-} from "@/components/ui/tooltip"
-import { TooltipProvider } from '@radix-ui/react-tooltip'
+} from '@/components/ui/tooltip'
 import { menuOptions } from '@/lib/constant'
-import { 
-  Home, 
-  Workflow, 
-  Settings, 
-  Zap, 
-  CreditCard, 
-  FileText, 
-  FileX 
-} from 'lucide-react'
+import clsx from 'clsx'
 
 type Props = {}
 
 const MenuOptions = (props: Props) => {
   const pathName = usePathname()
-  
-  const iconMap = {
-    'Dashboard': Home,
-    'Workflows': Workflow,
-    'Settings': Settings,
-    'Connections': Zap,
-    'Billing': CreditCard,
-    'Templates': FileText,
-    'Logs': FileX,
-  }
 
   return (
-    <nav className="dark:bg-black h-screen overflow-scroll justify-between flex items-center flex-col gap-10 py-6 px-2">
+    <nav className="dark:bg-black h-screen overflow-scroll justify-between flex items-center flex-col py-6 px-2">
       <Link className="flex font-bold flex-row" href="/">
         fuzzie.
       </Link>
-      <TooltipProvider>
-        {menuOptions.map((option) => {
-          const Icon = iconMap[option.name as keyof typeof iconMap]
-          const isActive = pathName === option.href
-          
-          return (
-            <Tooltip key={option.name}>
-              <TooltipTrigger asChild>
-                <Link
-                  href={option.href}
-                  className={`p-2 rounded-lg transition-colors ${
-                    isActive 
-                      ? 'bg-white text-black' 
-                      : 'hover:bg-white/10 text-white'
-                  }`}
-                >
-                  <Icon size={20} />
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{option.name}</p>
-              </TooltipContent>
-            </Tooltip>
-          )
-        })}
-      </TooltipProvider>
+
+      <div className="flex flex-col items-center gap-6">
+        <TooltipProvider>
+          {menuOptions.map((menuItem) => (
+            <ul key={menuItem.name}>
+              <Tooltip delayDuration={0}>
+                <TooltipTrigger asChild>
+                  <li>
+                    <Link
+                      href={menuItem.href}
+                      className={clsx(
+                        'group h-8 w-8 flex items-center justify-center scale-[1.5] rounded-lg p-[3px] cursor-pointer',
+                        {
+                          'dark:bg-[#2F006B] bg-[#EEE0FF]':
+                            pathName === menuItem.href,
+                        }
+                      )}
+                    >
+                      <menuItem.Component
+                        selected={pathName === menuItem.href}
+                      />
+                    </Link>
+                  </li>
+                </TooltipTrigger>
+                <TooltipContent>
+                  {menuItem.name}
+                </TooltipContent>
+              </Tooltip>
+            </ul>
+          ))}
+        </TooltipProvider>
+      </div>
     </nav>
   )
 }
