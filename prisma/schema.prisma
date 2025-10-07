@@ -17,4 +17,20 @@ model User {
   credits      String?  @default("10")
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
+
+  LocalGoogleCredential LocalGoogleCredential?
+}
+
+model LocalGoogleCredential {
+  id          String   @id @default(uuid())
+  accessToken String   @unique
+  folderId    String?
+  pageToken   String?
+  channelId   String   @unique @default(uuid())
+  subscribed  Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  userId Int  @unique
+  user   User @relation(fields: [userId], references: [id])
 }
