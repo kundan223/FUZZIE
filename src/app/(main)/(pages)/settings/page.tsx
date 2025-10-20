@@ -19,6 +19,11 @@ const Settings = (props: Props) => {
             </p>
         </div>
 
+        <ProfilePicture>
+
+            
+        </ProfilePicture>
+
         <ProfileForm/>
 
       </div>
